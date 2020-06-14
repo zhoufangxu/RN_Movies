@@ -8,6 +8,8 @@ import MainScreen from './src/components/MainScreen';
 import {Image, StyleSheet} from 'react-native';
 import InputSearch from './src/components/index/InputSearch';
 import MoviesInfoScreen from './src/components/MoviesInfoScreen';
+import WantSeeScreen from './src/components/Info/WantSeeScreen';
+import SeedScreen from './src/components/Info/Seed';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,6 +40,16 @@ function MainStackScreen() {
         name="MoviesInfoScreen"
         component={MoviesInfoScreen}
         options={{title: '电影详情'}}
+      />
+      <MainStack.Screen
+        name="WantSeeScreen"
+        component={WantSeeScreen}
+        options={{title: '想看'}}
+      />
+      <MainStack.Screen
+        name="SeedScreen"
+        component={SeedScreen}
+        options={{title: '看过'}}
       />
     </MainStack.Navigator>
   );

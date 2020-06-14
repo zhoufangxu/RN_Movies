@@ -27,7 +27,7 @@ export default class HotMoviesScreen extends React.Component {
                 onPress={() => {
                   this.props.this.props.navigation.navigate(
                     'MoviesInfoScreen',
-                    {id: index},
+                    {id: item.id},
                   );
                 }}>
                 <View style={styles.MoviesList_item}>
