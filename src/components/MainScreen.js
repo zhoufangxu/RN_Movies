@@ -53,15 +53,15 @@ export default class MainScreen extends React.Component {
     return (
       <ScrollView>
         {/* 搜索组件 */}
-        <MyUserInputScreen />
+        <MyUserInputScreen this={this} />
         {/* 自定义轮播图组件 */}
         <Banner imageList={this.state.imageList} />
         {/* 热门电影组件 */}
         <HotMoviesScreen MoviesList={this.state.HotMovies} this={this} />
         {/* 电影列表组件 */}
-        <ListScreen />
+        <ListScreen this={this} />
         {/* 电影列表组件 */}
-        <MarvellousScreen />
+        <MarvellousScreen this={this} />
       </ScrollView>
     );
   }

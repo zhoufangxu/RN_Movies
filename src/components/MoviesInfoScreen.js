@@ -36,10 +36,6 @@ export default class MoviesInfoScreen extends React.Component {
         console.log(err);
       });
   }
-  //  评分当前选中
-  _selectIndex(count) {
-    this.state.currentScore = count;
-  }
   render() {
     let item = Object.keys(this.state.MovieInfo);
     // console.log(this.state.MovieInfo);
@@ -102,7 +98,6 @@ export default class MoviesInfoScreen extends React.Component {
           </View>
           {/* 评分组件 */}
           <StarScore
-            selectIndex={this._selectIndex.bind(this)}
             score={this.state.MovieInfo.rating.average}
             ratings_count={this.state.MovieInfo.ratings_count}
             details={this.state.MovieInfo.rating.details}

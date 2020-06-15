@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity, Image, Text} from 'react-native';
+import {StyleSheet, View, Image, Text} from 'react-native';
 export default class StarScore extends React.Component {
   // 构造
   constructor(props) {
@@ -9,26 +9,24 @@ export default class StarScore extends React.Component {
       totalScore: 5, // 总分值
       currentScore: this.props.score / 2, // 分值
       widthArr: [],
-      ratings_count: this.props.ratings_count,
     };
   }
   componentDidMount() {
-    console.log(this.props);
+    this.getWidth();
+  }
+  getWidth = () => {
     let widthArr = [];
-    for (const key in this.props.details) {
+    for (var key in this.props.details) {
       widthArr.push(this.props.details[key]);
     }
-    () => {
-      this.setState({
-        widthArr,
-      });
-    };
-  }
+    widthArr = widthArr.map(arr => {
+      return (arr / this.props.ratings_count) * 100;
+    });
+    this.setState({
+      widthArr,
+    });
+  };
   render() {
-    if (this.state.widthArr.length !== 0) {
-      let five = this.state.ratings_count / this.state.widthArr[4] / 100;
-      console.log(five);
-    }
     return (
       <View style={styles.star_box}>
         <View style={styles.title}>
@@ -116,19 +114,44 @@ export default class StarScore extends React.Component {
               </View>
               <View style={styles.line_box}>
                 <View style={styles.line}>
-                  <View style={[styles.line_active, styles.five]} />
+                  <View
+                    style={[
+                      styles.line_active,
+                      {width: this.state.widthArr[4]},
+                    ]}
+                  />
                 </View>
                 <View style={styles.line}>
-                  <View style={[styles.line_active, styles.four]} />
+                  <View
+                    style={[
+                      styles.line_active,
+                      {width: this.state.widthArr[3]},
+                    ]}
+                  />
                 </View>
                 <View style={styles.line}>
-                  <View style={[styles.line_active, styles.three]} />
+                  <View
+                    style={[
+                      styles.line_active,
+                      {width: this.state.widthArr[2]},
+                    ]}
+                  />
                 </View>
                 <View style={styles.line}>
-                  <View style={[styles.line_active, styles.two]} />
+                  <View
+                    style={[
+                      styles.line_active,
+                      {width: this.state.widthArr[1]},
+                    ]}
+                  />
                 </View>
                 <View style={styles.line}>
-                  <View style={[styles.line_active, styles.one]} />
+                  <View
+                    style={[
+                      styles.line_active,
+                      {width: this.state.widthArr[0]},
+                    ]}
+                  />
                 </View>
               </View>
             </View>
@@ -141,16 +164,10 @@ export default class StarScore extends React.Component {
   _renderBody() {
     let images = [];
     for (var i = 1; i <= this.state.totalScore; i++) {
-      let currentCount = i;
       images.push(
         <View key={'i' + i}>
-          <TouchableOpacity
-            onPress={() => {
-              this._score(currentCount);
-            }}>
-            <Image source={require('../assets/star.png')} style={styles.star} />
-            {this._renderYellowStart(i)}
-          </TouchableOpacity>
+          <Image source={require('../assets/star.png')} style={styles.star} />
+          {this._renderYellowStart(i)}
         </View>,
       );
     }
@@ -165,12 +182,6 @@ export default class StarScore extends React.Component {
         />
       );
     }
-  }
-  _score(i) {
-    this.setState({
-      currentScore: i,
-    });
-    this.props.selectIndex(i);
   }
 }
 

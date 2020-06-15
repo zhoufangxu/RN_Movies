@@ -34,13 +34,20 @@ export default class MarvellousScreen extends React.Component {
       });
   }
   render() {
+    let _this = this.props.this;
     if (this.state.productList.length !== 0) {
       return (
         <View>
           <Text style={styles.title}>精挑好货，不可错过</Text>
           {/* 第一行数据 */}
           <View style={styles.row}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[0].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[0].images.medium}}
@@ -54,7 +61,13 @@ export default class MarvellousScreen extends React.Component {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[1].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[1].images.medium}}
@@ -71,7 +84,13 @@ export default class MarvellousScreen extends React.Component {
           </View>
           {/* 第二行数据 */}
           <View style={styles.row}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[2].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[2].images.medium}}
@@ -85,7 +104,13 @@ export default class MarvellousScreen extends React.Component {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[3].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[3].images.medium}}

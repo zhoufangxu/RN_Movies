@@ -5,20 +5,26 @@ export default class MyUserInputScreen extends React.Component {
     super();
   }
   render() {
+    let _this = this.props.this;
     return (
-      <View style={ss.search}>
-        <Image source={require('../assets/search.png')} style={ss.search_img} />
+      <View style={styles.search}>
+        <Image
+          source={require('../assets/search.png')}
+          style={styles.search_img}
+        />
         <TextInput
           placeholder="请输入片名,主演或者导演"
-          style={ss.userInput}
-          onFocus={this.jumpSearch}
+          style={styles.userInput}
+          onFocus={() => {
+            _this.props.navigation.navigate('InputSearch');
+          }}
         />
       </View>
     );
   }
 }
 
-let ss = StyleSheet.create({
+let styles = StyleSheet.create({
   search: {
     flexDirection: 'row',
     justifyContent: 'flex-start',

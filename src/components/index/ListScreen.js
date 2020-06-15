@@ -63,13 +63,20 @@ export default class ListScreen extends React.Component {
     }
   };
   render() {
+    let _this = this.props.this;
     if (this.state.productList.length !== 0) {
       return (
         <View>
-          <Text style={styles.title}>猜你喜欢></Text>
+          <Text style={styles.title}>猜你喜欢</Text>
           {/* 第一行数据 */}
           <View style={styles.row}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[0].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[0].images.medium}}
@@ -83,7 +90,13 @@ export default class ListScreen extends React.Component {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[1].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[1].images.medium}}
@@ -100,7 +113,13 @@ export default class ListScreen extends React.Component {
           </View>
           {/* 第二行数据 */}
           <View style={styles.row}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[2].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[2].images.medium}}
@@ -114,7 +133,13 @@ export default class ListScreen extends React.Component {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[3].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[3].images.medium}}
@@ -131,7 +156,13 @@ export default class ListScreen extends React.Component {
           </View>
           {/* 第三行数据 */}
           <View style={styles.row}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[4].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[4].images.medium}}
@@ -145,7 +176,13 @@ export default class ListScreen extends React.Component {
                 </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                _this.props.navigation.navigate('MoviesInfoScreen', {
+                  id: this.state.productList[5].id,
+                });
+              }}>
               <View style={styles.item}>
                 <Image
                   source={{uri: this.state.productList[5].images.medium}}
