@@ -7,6 +7,7 @@ import {
   Button,
   Image,
   Text,
+  Alert,
 } from 'react-native';
 
 export default class LoginScreen extends React.Component {
@@ -27,12 +28,39 @@ export default class LoginScreen extends React.Component {
       upwd: val,
     });
   };
+  //登录验证
   isLogin = () => {
-    let uname = 'Tom',
-      upwd = '123';
-    if (this.state.uname === uname && this.state.upwd === upwd) {
-      this.props.navigation.navigate('Main', {pid: 1, uname: 'tom'});
-    }
+    let uname = this.state.uname,
+      upwd = this.state.upwd;
+    let url = `http://127.0.0.1:3000/login?uname=${uname}&upwd=${upwd}`;
+    fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(body => {
+        if (body.code === 1) {
+          Alert.alert(
+            '提示',
+            '登录成功',
+            [
+              {
+                text: 'OK',
+                onPress: () =>
+                  this.props.navigation.navigate('Main', {
+                    pid: 1,
+                    uname: 'tom',
+                  }),
+              },
+            ],
+            {cancelable: false},
+          );
+        } else {
+          console.log(1);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   render() {
     return (

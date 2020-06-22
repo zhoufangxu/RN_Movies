@@ -133,7 +133,7 @@ export default class App extends React.Component {
           <Tab.Screen
             name="Login"
             component={LoginStackScreen}
-            options={{title: '登录'}}
+            options={{title: '我的'}}
           />
         </Tab.Navigator>
       </NavigationContainer>

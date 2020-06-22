@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {View, TextInput, Button, StyleSheet, Alert} from 'react-native';
 export default class WantSeeScreen extends React.Component {
   constructor() {
     super();
@@ -23,7 +23,38 @@ export default class WantSeeScreen extends React.Component {
           multiline={true}
         />
         <View style={styles.btn}>
-          <Button title="确定" color="#fff" />
+          <Button
+            title="确定"
+            color="#fff"
+            onPress={() => {
+              let content = this.state.userInput;
+              fetch('http://127.0.0.1:3000/addcomment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `nid=5&content=${content}`,
+              })
+                .then(res => {
+                  if (res.status === 200) {
+                    Alert.alert(
+                      '提示',
+                      '发表成功',
+                      [
+                        {
+                          text: 'OK',
+                          onPress: () => this.setState({userInput: ''}),
+                        },
+                      ],
+                      {cancelable: false},
+                    );
+                  }
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            }}
+          />
         </View>
       </View>
     );
